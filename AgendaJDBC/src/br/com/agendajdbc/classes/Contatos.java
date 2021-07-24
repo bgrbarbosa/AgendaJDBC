@@ -1,5 +1,7 @@
 package br.com.agendajdbc.classes;
 
+import java.util.Objects;
+
 public class Contatos {
 
 	private int id_contato;
@@ -8,6 +10,25 @@ public class Contatos {
 	private String cel_contato;
 	private String email_contato;
 	
+	
+	// Método usado para comparar os objetos
+	@Override
+	public int hashCode() {
+		return Objects.hash(id_contato);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contatos other = (Contatos) obj;
+		return id_contato == other.id_contato;
+	}
+
 	public Contatos() {
 		
 	}

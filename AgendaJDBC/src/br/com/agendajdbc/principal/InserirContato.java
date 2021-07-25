@@ -9,10 +9,10 @@ public class InserirContato {
 		// TODO Auto-generated method stub
 
 		Contatos contato = new Contatos();
-		contato.setNm_contato("Bruno Gaspar");
-		contato.setTel_contato("24526434");
-		contato.setCel_contato("99993294");
-		contato.setEmail_contato("bgrbarbosa@oi.com.br");
+		contato.setNm_contato("Gaspar");
+		contato.setTel_contato("24531408");
+		contato.setCel_contato("992993294");
+		contato.setEmail_contato("bgrbarbosa@gmail.com");
 		
 		ContatoDao contatodao = new ContatoDao();
 		contatodao.adiciona(contato);

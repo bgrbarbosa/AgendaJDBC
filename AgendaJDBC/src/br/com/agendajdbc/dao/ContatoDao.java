@@ -13,6 +13,7 @@ import br.com.agendajdbc.connectionfactory.ConnectionFactory;
 
 public class ContatoDao {
 	
+	//------------------------------------------------------------------------------------------------
 	// Método para fazer a inserção no Banco de Dados
 	public void adiciona(Contatos contato) {
 	    		
@@ -45,10 +46,13 @@ public class ContatoDao {
 		}
 	}
 	
+	//-------------------------------------------------------------------------------------------------
 	// Método para listar todos os Contatos
 	public List<Contatos> listarContatos() {
-		
+		//String SQL para seleção do registros
 		String sql = "select * from contato";
+		
+		//Lista de contatos para receber o resultado da pesquisa
 		List<Contatos> listaContatos = new ArrayList<Contatos>();
 		
 		Connection con = null;
@@ -100,5 +104,49 @@ public class ContatoDao {
 		return listaContatos;
 	}
 	
-	
+	//------------------------------------------------------------------------------------------------
+	//Método para a exclusão de um determinado registro
+	public void deletaRegistro(int id){
+		
+		ContatoDao dao = new ContatoDao();
+			
+		String sql = "delete from contato where (id_contato = ?)"; 
+		
+		Connection con = null;
+		PreparedStatement pstm = null;
+		
+		try {
+			con = ConnectionFactory.openConnection();
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, id);
+			pstm.execute();
+			pstm.close();
+						
+		}
+		catch (SQLException e) {
+			
+		}finally {
+			// Testando a conexão para poder fechar
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if (pstm != null) {
+				try {
+					pstm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+					
+		}       
+
+	}
+	//--------------------------------------------------------------------------------------
 }

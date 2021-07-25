@@ -28,6 +28,14 @@ public class Contatos {
 		Contatos other = (Contatos) obj;
 		return id_contato == other.id_contato;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Contatos [id_contato=" + id_contato + ", nm_contato=" + nm_contato + ", tel_contato=" + tel_contato
+				+ ", cel_contato=" + cel_contato + ", email_contato=" + email_contato + "]";
+	}
 
 	public Contatos() {
 		
